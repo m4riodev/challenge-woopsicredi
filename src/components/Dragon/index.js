@@ -18,10 +18,10 @@ const Dragon = props => {
     useEffect(() => { getDragon() }, []);
     
     return (
-        <section id="dragon">
+        <section>
             <h2>Dragon</h2>
             {(dragon.name || !id) && 
-                <Form dragon={dragon} apiUrl={props.apiUrl} history={history} />
+                <Form dragon={dragon} history={history} />
             }
             <button type="button" onClick={() => history.push('/')}>Back</button>
         </section>

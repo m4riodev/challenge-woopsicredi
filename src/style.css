@@ -44,7 +44,7 @@ legend {
 label {
     display: block;
     padding-top: 20px;
-    color: #6e00e6;
+    color: #7f7f7f;
 }
 
 legend + label {
@@ -55,7 +55,6 @@ input {
     display: block;
     width: calc(100% - 8px);
     height: 30px;
-    border-color: #3FE66D;
     border-radius: 5px;
     font-size: 1rem;
 }
