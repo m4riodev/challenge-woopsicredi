@@ -17,9 +17,10 @@ const Dragons = props => {
     useEffect(() => { getDragons() }, [setDragons]);
 
     return (
-        <section id="dragons">
+        <section>
             <h2>Dragons</h2>
             <Link to="/new">Add dragon</Link>
+            <Link to="/login">Logout</Link>
             <ul>
                 { dragons.map((value, index) => (
                 <li key={index}>
@@ -27,7 +28,6 @@ const Dragons = props => {
                 </li>
                 ))}
             </ul>
-            <Link to="/login">Logout</Link>
         </section>
     )
 }

@@ -23,7 +23,7 @@ const Dragon = props => {
             {(dragon.name || !id) && 
                 <Form dragon={dragon} apiUrl={props.apiUrl} history={history} />
             }
-            <button type="button" onClick={() => history.goBack()}>Back</button>
+            <button type="button" onClick={() => history.push('/')}>Back</button>
         </section>
     )
 }

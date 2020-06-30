@@ -7,8 +7,11 @@ class Form extends React.Component {
         super(props);
         this.state = {
             id: props.dragon.id || '',
+            createdAt: props.dragon.createdAt || '',
             name: props.dragon.name || '', 
             type: props.dragon.type || '',
+            submitted: false,
+            loading: false,
             msg: ''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -23,22 +26,28 @@ class Form extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if(this.state.id) {
+        this.setState({ submitted: true });
+        const { id, name, type } = this.state;
+
+        if(!(name && type)) return;
+
+        if(id) {
             const body = {
-                name: this.state.name,
-                type: this.state.type
+                name: name,
+                type: type
             };
             
-            axios.put(`${window.$apiUrl}/api/v1/dragon/${this.state.id}`, body)
+            axios.put(`${window.$apiUrl}/api/v1/dragon/${id}`, body)
             .then(() => {
                 this.setState({
-                    msg: 'The data has been updated successfully!'
+                    msg: 'The data has been updated successfully!',
+                    loading: false
                 });
             });
         } else {
             const body = {
-                name: this.state.name,
-                type: this.state.type,
+                name: name,
+                type: type,
                 createdAt: moment().format()
             };
 
@@ -46,7 +55,9 @@ class Form extends React.Component {
             .then(res => {
                 this.setState({
                     id: res.data.id,
-                    msg: 'The dragon was successfully added!'
+                    createdAt: res.data.createdAt,
+                    msg: 'The dragon was successfully added!',
+                    loading: false
                 });
             });
         }
@@ -62,21 +73,31 @@ class Form extends React.Component {
     }
 
     render() {
+        const { id, createdAt, name, type, msg, submitted, loading } = this.state;
         return (
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
                     <legend>Formulário</legend>
-                    <input type="hidden" name="id" value={this.state.id} />
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} />
-                    <label htmlFor="type">Type:</label>
-                    <input type="text" id="type" name="type" value={this.state.type} onChange={this.handleChange} />
-                    <button type="submit">Save</button>
-                    {this.state.msg && 
-                        <p>{this.state.msg}</p>
+                    {createdAt && 
+                        <em>Created At: {moment(createdAt).format('lll')}</em>
                     }
-                    {this.state.id && 
+                    <input type="hidden" name="id" value={id} />
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" id="name" name="name" value={name} onChange={this.handleChange} />
+                    {submitted && !name &&
+                        <small>Name is required</small>
+                    }
+                    <label htmlFor="type">Type:</label>
+                    <input type="text" id="type" name="type" value={type} onChange={this.handleChange} />
+                    {submitted && !type &&
+                        <small>Type is required</small>
+                    }
+                    <button type="submit" disabled={loading}>Save</button>
+                    {id && 
                         <button type="button" onClick={() => this.deleteDragon()}>Delete</button>
+                    }
+                    {msg && 
+                        <p className="success">{msg}</p>
                     }
                 </fieldset>
             </form>
