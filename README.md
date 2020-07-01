@@ -1,4 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The master in the art of living makes little distinction between his work and his play, his labor and his leisure, his mind and his body, his education and his recreation, his love and his religion. He hardly knows which is which. He simply pursues his vision of excellence at whatever he does, leaving others to decide whether he is working or playing. To him he is always doing both.
+
+-James Michener
+
+# Woop Sicredi - Challenge
+
+This project was developed for the Woop Sicredi front-end challenge in 06/2020.
+
+*This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Login
+
+The login script was all developed based on the tutorial "React - Basic HTTP Authentication" (https://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#index-html).
+
+Jason, thanks for the great explanation. 
+
+Long live the internet, long live free information!
+
+## Test
+
+To test, run:
+
+### `yarn test`
 
 ## Available Scripts
 
