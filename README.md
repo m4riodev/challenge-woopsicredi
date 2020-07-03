@@ -2,9 +2,9 @@ The master in the art of living makes little distinction between his work and hi
 
 -James Michener
 
-# Woop Sicredi - Challenge
+# Front-end - Challenge
 
-This project was developed for the Woop Sicredi front-end challenge in 06/2020.
+This project was developed for a front-end challenge in 06/2020.
 
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
