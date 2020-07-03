@@ -79,7 +79,7 @@ class Form extends React.Component {
                 <fieldset>
                     <legend>Formulário</legend>
                     {createdAt && 
-                        <em>Created At: {moment(createdAt).format('lll')}</em>
+                        <em>Created At: {createdAt}</em>
                     }
                     <input type="hidden" name="id" value={id} />
                     <label htmlFor="name">Name:</label>
